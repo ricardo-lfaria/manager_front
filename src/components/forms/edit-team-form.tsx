@@ -7,20 +7,28 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { DialogClose } from "@/components/ui/dialog";
 import Image from "next/image";
+import { useTeamContext } from "@/context/team-context";
+import { useEffect } from "react";
 
 const editTeamSchema = z.object({
+  teamAvatar: z.string(),
   teamName: z.string().min(1, "Nome do Time é obrigatório"),
 });
 
 type editTeamData = z.infer<typeof editTeamSchema>;
 
 export default function EditTeamForm() {
+    const {teamData} = useTeamContext()
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<editTeamData>({
     resolver: zodResolver(editTeamSchema),
+    defaultValues: {
+        teamName: teamData?.name || '',
+        teamAvatar: teamData?.avatar || '',
+    }
   });
 
   const onSubmit = (data: editTeamData) => {
@@ -31,7 +39,7 @@ export default function EditTeamForm() {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       <div className="flex flex-col items-center justify-center gap-4">
         <Image
-          src="/demoro.png"
+          src={teamData?.avatar || "/demoro.png"}
           width={250}
           height={250}
           alt="foto do jogador"

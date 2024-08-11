@@ -19,7 +19,7 @@ export default function DialogEditTeam() {
       </DialogTrigger>
       <DialogContent className="flex flex-col w-4/5 lg:w-1/4 py-6 h-fit justify-start items-center gap-4">
         <DialogHeader className="border-b w-full pb-4">
-          <DialogTitle className="px-4">Abrir Mercado</DialogTitle>
+          <DialogTitle className="px-4">Edite o TIme</DialogTitle>
           <DialogDescription></DialogDescription>
         </DialogHeader>
         <div className="w-full px-4">

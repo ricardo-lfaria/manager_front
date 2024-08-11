@@ -2,16 +2,60 @@ import { Metadata } from "next";
 import { GameCard } from "@/components/cards/game-card";
 import Link from "next/link";
 import DialogCreateGame from "@/components/dialogs/create-game-dialog";
+import { Game } from "@/types/games";
 
 export const metadata: Metadata = {
   title: "admin - games",
 };
 
+async function getSeriesAGames(): Promise<Game[]> {
+  const res = await fetch(
+    "https://667e1d1d297972455f6723ea.mockapi.io/tournament/1/game",
+    {
+      // cache: "no-cache"
+      next: { revalidate: 10 },
+    }
+  );
+  const data = await res.json();
+  console.log(data);
+  return data;
+}
+
+async function getSeriesBGames(): Promise<Game[]> {
+  const res = await fetch(
+    "https://667e1d1d297972455f6723ea.mockapi.io/tournament/2/game",
+    {
+      // cache: "no-cache"
+      next: { revalidate: 10 },
+    }
+  );
+  const data = await res.json();
+  console.log(data);
+  return data;
+}
+
+async function getFemaleGames(): Promise<Game[]> {
+  const res = await fetch(
+    "https://667e1d1d297972455f6723ea.mockapi.io/tournament/3/game",
+    {
+      // cache: "no-cache"
+      next: { revalidate: 10 },
+    }
+  );
+  const data = await res.json();
+  console.log(data);
+  return data;
+}
+
 export default async function AdminGamesPage() {
+  const seriesAGames = await getSeriesAGames();
+  const seriesBGames = await getSeriesBGames();
+  const femaleGames = await getFemaleGames();
+
   return (
     <div className="flex flex-col gap-4 items-center justify-center">
       <div className="flex justify-between items-center w-full">
-        <h1 className="font-semibold text-xl">Campanhas</h1>
+        <h1 className="font-semibold text-xl">Jogos</h1>
         <DialogCreateGame></DialogCreateGame>
       </div>
 
@@ -27,14 +71,9 @@ export default async function AdminGamesPage() {
         </Link>
       </div>
       <div className="flex flex-col gap-6 w-full xl:w-11/12 justify-start items-start self-start">
-        <GameCard href="/admin/games/gamesId"></GameCard>
-        <GameCard href="/admin/games/gamesId"></GameCard>
-        <GameCard href="/admin/games/gamesId"></GameCard>
-        <GameCard href="/admin/games/gamesId"></GameCard>
-        <GameCard href="/admin/games/gamesId"></GameCard>
-        <GameCard href="/admin/games/gamesId"></GameCard>
-        <GameCard href="/admin/games/gamesId"></GameCard>
-        <GameCard href="/admin/games/gamesId"></GameCard>
+        {seriesAGames.slice(0, 3).map((game) => (
+          <GameCard key={game.id} href={`/games/${game.id}`} {...game} />
+        ))}
       </div>
       <div className="flex flex-row w-full justify-between items-center">
         <div className="flex flex-col justify-start items-start">
@@ -42,14 +81,9 @@ export default async function AdminGamesPage() {
         </div>
       </div>
       <div className="flex flex-col gap-6 w-full xl:w-11/12 justify-start items-start self-start">
-        <GameCard href="/admin/games/gamesId"></GameCard>
-        <GameCard href="/admin/games/gamesId"></GameCard>
-        <GameCard href="/admin/games/gamesId"></GameCard>
-        <GameCard href="/admin/games/gamesId"></GameCard>
-        <GameCard href="/admin/games/gamesId"></GameCard>
-        <GameCard href="/admin/games/gamesId"></GameCard>
-        <GameCard href="/admin/games/gamesId"></GameCard>
-        <GameCard href="/admin/games/gamesId"></GameCard>
+        {seriesBGames.slice(0, 3).map((game) => (
+          <GameCard key={game.id} href={`/games/${game.id}`} {...game} />
+        ))}
       </div>
       <div className="flex flex-row w-full justify-between items-center">
         <div className="flex flex-col justify-start items-start">
@@ -57,14 +91,9 @@ export default async function AdminGamesPage() {
         </div>
       </div>
       <div className="flex flex-col gap-6 w-full xl:w-11/12 justify-start items-start self-start">
-        <GameCard href="/admin/games/gamesId"></GameCard>
-        <GameCard href="/admin/games/gamesId"></GameCard>
-        <GameCard href="/admin/games/gamesId"></GameCard>
-        <GameCard href="/admin/games/gamesId"></GameCard>
-        <GameCard href="/admin/games/gamesId"></GameCard>
-        <GameCard href="/admin/games/gamesId"></GameCard>
-        <GameCard href="/admin/games/gamesId"></GameCard>
-        <GameCard href="/admin/games/gamesId"></GameCard>
+        {femaleGames.slice(0, 3).map((game) => (
+          <GameCard key={game.id} href={`/games/${game.id}`} {...game} />
+        ))}
       </div>
     </div>
   );

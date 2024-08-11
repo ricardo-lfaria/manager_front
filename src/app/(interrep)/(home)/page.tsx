@@ -10,10 +10,31 @@ import {
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { Game } from "@/types/games";
+async function getGames(): Promise<Game[]> {
+  const res = await fetch(
+    "https://667e1d1d297972455f6723ea.mockapi.io/tournament/1/game",
+    {
+      //   cache: "no-cache",
+      next: { revalidate: 10 },
+    }
+  );
+  const data = await res.json();
+  console.log(data);
+  return data;
+}
+
 export const metadata: Metadata = {
-  title: "home",
+  title: "InterREP Manager | Sua Central do Fantasy Game",
+  description:
+    "Mergulhe no mundo do fantasy game do InterREP! Escale seu time dos sonhos com os craques do torneio, " +
+     "acompanhe as partidas em tempo real e dispute o topo do ranking com seus amigos. Viva a emoção do InterREP como nunca antes!",
+  keywords:
+    "InterREP, fantasy game, futebol society, São Carlos, USP, UFSCar, IFSP",
 };
+
 export default async function Home() {
+  const games = await getGames();
   return (
     <div className="flex flex-col px-4 gap-6 items-center justify-center">
       <h2 className="text-2xl w-full">
@@ -55,7 +76,7 @@ export default async function Home() {
             />
           </CarouselItem>
         </CarouselContent>
-        <CarouselPrevious  />
+        <CarouselPrevious />
         <CarouselNext />
       </Carousel>
       <div className="flex flex-row px-4 w-full gap-2 justify-between items-center">
@@ -94,10 +115,9 @@ export default async function Home() {
         </Link>
       </div>
       <div className="flex flex-col gap-6 w-full xl:w-11/12 justify-start items-start self-start">
-        <GameCard href="/games/gamesId"/>
-        <GameCard href="/games/gamesId"/>
-        <GameCard href="/games/gamesId"/>
-        <GameCard href="/games/gamesId"/>
+        {games.slice(0, 10).map((game) => (
+          <GameCard key={game.id} href={`/games/${game.id}`} {...game} />
+        ))}
       </div>
     </div>
   );

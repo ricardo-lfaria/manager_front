@@ -9,19 +9,41 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 
-export function TeamCard() {
+interface TeamCardProps {
+  href: string;
+  position: number;
+  name: string;
+  lastPosition: number;
+  points: number;
+  avatar: string;
+  owner: string;
+  id: string;
+  tournamentId: string;
+}
+
+export function TeamCard({
+  href,
+  position,
+  name,
+  lastPosition,
+  points,
+  avatar,
+  owner,
+  id,
+  tournamentId,
+}: TeamCardProps) {
   return (
-    <Link href="/admin/teams/teamId">
+    <Link href={href}>
       <Card className="h-fit rounded-xl">
         <CardHeader className="shadow-sm border-b items-start p-2">
-          <CardTitle className="text-lg">República Demorô</CardTitle>
+          <CardTitle className="text-lg overflow-hidden truncate min-w-32 max-w-32 ">{name}</CardTitle>
           <CardDescription className="hidden">
             Card de república
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col items-center justify-center py-4 gap-4">
           <Image
-            src="/demoro.png"
+            src={avatar}
             width={200}
             height={200}
             alt="foto do jogador"
