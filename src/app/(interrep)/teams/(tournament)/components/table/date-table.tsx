@@ -32,14 +32,14 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { AvatarImage } from "@radix-ui/react-avatar";
 import { DialogPlayer } from "@/components/dialogs/player-dialog";
 import { PlayerCard } from "@/components/cards/player-card";
-import { User } from "./collumns";
+import { Player } from "@/types/player";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
 }
 
-interface DataRow extends User {}
+interface DataRow extends Player {}
 
 export function DataTable<TData extends DataRow, TValue>({
   columns,
@@ -74,9 +74,9 @@ export function DataTable<TData extends DataRow, TValue>({
     <div className="bg-white rounded-xl  w-full flex flex-col">
       <DialogPlayer isOpen={isOpen} onClose={() => setIsOpen(false)}>
         {selectedRow && (
-          <PlayerCard
-          // playerData={selectedRow}
-          />
+          <div className="w-full">
+            <PlayerCard key={selectedRow.id} {...selectedRow} />
+          </div>
         )}
       </DialogPlayer>
       <div className="bg-white rounded-xl w-full">

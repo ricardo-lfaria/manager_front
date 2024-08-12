@@ -136,7 +136,11 @@ export default async function AdminHome() {
               </>
             )}
           </div>
-          <div className={`flex items-center w-full lg:justify-end lg:w-1/3 ${!openMarket ? 'pointer-events-none opacity-50' : ''}`}>
+          <div
+            className={`flex items-center w-full lg:justify-end lg:w-1/3 ${
+              !openMarket ? "pointer-events-none opacity-50" : ""
+            }`}
+          >
             <DialogMarket />
           </div>
         </div>

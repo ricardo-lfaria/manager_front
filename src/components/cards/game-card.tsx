@@ -29,7 +29,7 @@ export async function GameCard({
 }: GameCardProps) {
   console.log(firstTeam);
   return (
-    <Link href={href} className="w-full shadow-sm shadow-neutral-100">
+    <Link href={href} className="w-full shadow-sm shadow-neutral-100 pointer-events-none">
       <div className="bg-white w-full h-fit gap-2 lg:h-16 flex flex-col lg:flex-row items-center justify-between rounded-md px-6 hover:bg-slate-100/40">
         <div className="flex items-center justify-between gap-9">
           <div className="flex items-center gap-5">

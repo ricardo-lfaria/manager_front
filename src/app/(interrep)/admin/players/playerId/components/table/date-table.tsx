@@ -1,6 +1,5 @@
-"use client";
-
-import { useEffect, useState } from "react";
+'use client'
+import { useState } from "react";
 
 import {
   ColumnDef,
@@ -8,7 +7,6 @@ import {
   SortingState,
   getCoreRowModel,
   getSortedRowModel,
-  getFilteredRowModel,
   getPaginationRowModel,
   useReactTable,
 } from "@tanstack/react-table";
@@ -23,7 +21,6 @@ import {
 } from "@/components/ui/table";
 
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectTrigger,
@@ -37,42 +34,21 @@ import {
   ChevronsLeft,
   ChevronsRight,
 } from "lucide-react";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { AvatarImage } from "@radix-ui/react-avatar";
-
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/components/ui/form";
-import { User } from "./collumns";
+import { Scouts } from "@/types/scouts";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
 }
 
-const filterSchema = z.object({
-  name: z.string().optional(),
-});
-type FilterSchma = z.infer<typeof filterSchema>;
-
-interface DataRow extends User {}
+interface DataRow extends Scouts {}
 
 export function DataTable<TData extends DataRow, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([]);
-  const form = useForm<FilterSchma>({
-    resolver: zodResolver(filterSchema),
-  });
-  const nameFilterValue = form.watch("name");
+
   const table = useReactTable({
     data,
     columns,
@@ -82,48 +58,13 @@ export function DataTable<TData extends DataRow, TValue>({
     onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
-    filterFns: {
-      name: (row, _, filterValue) => {
-        return String(row.getValue("name"))
-          .toLowerCase()
-          .includes(filterValue.toLowerCase());
-      },
-    },
   });
 
-  useEffect(() => {
-    table.getColumn("name")?.setFilterValue(nameFilterValue ?? "");
-  }, [nameFilterValue, table]);
   return (
-    <div className="bg-white rounded-xl w-full flex flex-col gap-6">
-      <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit((values) => {
-            table.getColumn("name")?.setFilterValue(values.name ?? "");
-          })}
-          className="flex items-center justify-between self-end px-6"
-        >
-          <div className="flex items-center py-4">
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input placeholder="Procurar por liga..." {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-        </form>
-      </Form>
-
-      <div className="bg-white rounded-xl w-full">
-        <Table>
+    <div className="bg-white rounded-xl w-full flex flex-col gap-6 ">
+      <div className="bg-white rounded-xl w-full ">
+        <Table >
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow className="hover:bg-inherit" key={headerGroup.id}>
@@ -157,24 +98,9 @@ export function DataTable<TData extends DataRow, TValue>({
                       key={cell.id}
                       className="text-neutral-950  text-center [&:nth-child(2)]:text-start [&:nth-child(3)]:text-start"
                     >
-                      {cell.column.id === "name" ? (
-                        <div className="flex flex-row gap-2 w-full items-center">
-                          <Avatar>
-                            <AvatarImage src={row.original.avatar} />
-                            <AvatarFallback>IR</AvatarFallback>
-                          </Avatar>
-                          {flexRender(
-                            cell.column.columnDef.cell,
-                            cell.getContext()
-                          )}
-                        </div>
-                      ) : (
-                        <>
-                          {flexRender(
-                            cell.column.columnDef.cell,
-                            cell.getContext()
-                          )}
-                        </>
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
                       )}
                     </TableCell>
                   ))}

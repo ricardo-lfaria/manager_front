@@ -9,16 +9,32 @@ import Image from "next/image";
 import DialogEditCampaign from "../dialogs/edit-campaign-dialog";
 import { Button } from "../ui/button";
 
-export function CampaignCard() {
+interface CampaignCardProps {
+  id: string;
+  name: string;
+  image: string;
+  createdAt: Date;
+  starts: Date;
+  ends: Date;
+}
+
+export function CampaignCard({
+  id,
+  name,
+  image,
+  createdAt,
+  starts,
+  ends,
+}: CampaignCardProps) {
   return (
     <Card className="h-fit rounded-xl">
       <CardHeader className="shadow-sm border-b p-2">
-        <CardTitle className="text-base">Campanha</CardTitle>
-        <CardDescription className="hidden">(PIV)</CardDescription>
+        <CardTitle className="text-base">{name}</CardTitle>
+        <CardDescription className="hidden">campanha</CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col py-4 gap-4">
         <Image
-          src="/scenery-sunset-calm-ocean.png"
+          src={image ||"/scenery-sunset-calm-ocean.png"}
           width={400}
           height={400}
           alt="foto do jogador"

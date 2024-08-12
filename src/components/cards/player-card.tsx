@@ -8,17 +8,31 @@ import {
 } from "@/components/ui/card";
 import Image from "next/image";
 import { TrendingDown, TrendingUp } from "lucide-react";
+import { Player } from "@/types/player";
 
-export function PlayerCard() {
+interface PlayerCardProps extends Player {}
+
+export function PlayerCard({  id,
+    teamId,
+    createdAt,
+    name,
+    avatar,
+    goals,
+    avarage,
+    price,
+    last,
+    status,
+    kicks,}:PlayerCardProps) {
+        console.log(name)     
   return (
     <Card className="h-fit rounded-xl">
       <CardHeader className="shadow-sm my-4 border-b">
-        <CardTitle>Ronaldo Fenemeno</CardTitle>
-        <CardDescription>(PIV)</CardDescription>
+        <CardTitle className="text-lg max-w-32 overflow-hidden truncate">{name}</CardTitle>
+        <CardDescription>(Linha)</CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col py-2 gap-4">
         <Image
-          src="/ronaldo.png"
+          src={avatar ||"/ronaldo.png"}
           width={400}
           height={400}
           alt="foto do jogador"
@@ -27,17 +41,17 @@ export function PlayerCard() {
         <div className="flex gap-2">
           <TrendingUp color="rgb(34 197 94)" />
           <p className="font-bold text-lg">Média</p>
-          <p className="text-lg">12</p>
+          <p className="text-lg">{avarage}</p>
         </div>
         <div className="flex gap-2">
           <TrendingUp color="rgb(34 197 94)" />
           <p className="font-bold text-lg">Gol</p>
-          <p className="text-lg">12</p>
+          <p className="text-lg">{goals}</p>
         </div>
         <div className="flex gap-2">
           <TrendingDown color="red" />
           <p className="font-bold text-lg">Chutes</p>
-          <p className="text-lg">12</p>
+          <p className="text-lg">{kicks}</p>
         </div>
       </CardContent>
       <CardFooter></CardFooter>

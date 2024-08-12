@@ -37,21 +37,7 @@ export const columns: ColumnDef<Player>[] = [
       );
     },
   },
-  {
-    accessorKey: "goals",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          className="text-neutral-950 text-lg items-center font-semibold"
-        >
-          Gols {/* Changed from 'Usuario' to 'Gols' */}
-          <ArrowUpDown className="ml-2 h-5 w-5" />
-        </Button>
-      );
-    },
-  },
+  
   {
     accessorKey: "avarage", // Corrected the typo
     header: ({ column }) => {

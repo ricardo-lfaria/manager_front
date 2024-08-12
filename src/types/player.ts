@@ -9,4 +9,5 @@ export type Player = {
   price: number;
   last: number;
   status: boolean;
+  kicks: number
 };

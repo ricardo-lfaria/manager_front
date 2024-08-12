@@ -8,22 +8,38 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { DataTable } from "../../app/(interrep)/teams/(tournament)/components/table/date-table";
-import {
-  User,
-  columns,
-} from "../../app/(interrep)/teams/(tournament)/components/table/collumns";
+import { columns } from "../../app/(interrep)/teams/(tournament)/components/table/collumns";
+import { Player } from "@/types/player";
 
-async function getPlayers(): Promise<User[]> {
-  const res = await fetch("https://667e1d1d297972455f6723ea.mockapi.io/teams", {
-    cache: "no-cache",
-  });
-  const data = await res.json();
+async function getTeamPlayers(
+  tournament: string,
+  team: string
+): Promise<Player[]> {
+  try {
+    const res = await fetch(
+      `https://667e1d1d297972455f6723ea.mockapi.io/tournament/${tournament}/teams/${team}/positions/1/players`,
+      {
+        cache: "no-cache",
+        //   next: { revalidate: 259200 },
+      }
+    );
 
-  return data;
+    if (!res.ok) {
+      throw new Error(`Failed to fetch players data. Status: ${res.status}`);
+    }
+
+    const data = await res.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.error("Error fetching players:", error);
+    return [];
+  }
 }
 
 export async function Dialogtable() {
-  const players = await getPlayers();
+  const players = await getTeamPlayers("1", "1");
+
   return (
     <Dialog>
       <DialogTrigger asChild>

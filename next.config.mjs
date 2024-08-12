@@ -6,7 +6,7 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'loremflickr.com',
                 port: '',
-                pathname: '/640/480/abstract', // Or '/640/480/**' for all under this path
+                pathname: '/640/480/**', // Or '/640/480/**' for all under this path
             },
             {
                 protocol: 'https',
@@ -14,12 +14,7 @@ const nextConfig = {
                 port: '',
                 pathname: '/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/**',
             },
-            {
-                protocol: 'https',
-                hostname: 'loremflickr.com',
-                port: '',
-                pathname: '/640/480/animals', // or '/640/480/**' for broader pattern
-            },
+           
         ],
     },
 };

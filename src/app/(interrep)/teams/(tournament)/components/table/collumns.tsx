@@ -4,16 +4,9 @@ import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export type User = {
-  position: string;
-  name: string;
-  owner: string;
-  lastPostion: string;
-  points: string;
-  avatar: string;
-};
+import { Player } from '@/types/player'; 
 
-export const columns: ColumnDef<User>[] = [
+export const columns: ColumnDef<Player>[] = [ 
   {
     accessorKey: "position",
     header: ({ column }) => {
@@ -21,10 +14,10 @@ export const columns: ColumnDef<User>[] = [
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          className="text-neutral-950 text-sm items-center"
+          className="text-neutral-950 text-lg items-center font-semibold"
         >
           Posição
-          <ArrowUpDown className="ml-2 h-3 w-3" />
+          <ArrowUpDown className="ml-2 h-5 w-5" />
         </Button>
       );
     },
@@ -36,55 +29,57 @@ export const columns: ColumnDef<User>[] = [
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          className="text-neutral-950 text-sm items-center "
+          className="text-neutral-950 text-lg items-center font-semibold"
         >
-          Time
-          <ArrowUpDown className="ml-2 h-3 w-3" />
+          Nome {/* Changed from 'Time' to 'Nome' */}
+          <ArrowUpDown className="ml-2 h-5 w-5" />
         </Button>
       );
     },
   },
+  
   {
-    accessorKey: "owner",
+    accessorKey: "avarage", // Corrected the typo
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          className="text-neutral-950 text-sm items-center"
+          className="text-neutral-950 text-lg items-center font-semibold"
         >
-          Usuario
-          <ArrowUpDown className="ml-2 h-3 w-3" />
+          Média {/* Changed from 'Última Pontuação' to 'Média' */}
+          <ArrowUpDown className="ml-2 h-5 w-5" />
         </Button>
       );
     },
   },
   {
-    accessorKey: "lastPostion",
+    accessorKey: "price",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          className="text-neutral-950 text-sm items-center"
+          className="text-neutral-950 text-lg items-center"
         >
-          Última Pontuação
-          <ArrowUpDown className="ml-2 h-3 w-3" />
+          Preço {/* Changed from 'Pontuação Total' to 'Preço' */}
+          <ArrowUpDown className="ml-2 h-5 w-5" />
         </Button>
       );
     },
   },
   {
-    accessorKey: "points",
+    accessorKey: "last",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          className="text-neutral-950 text-sm items-center"
+          className="text-neutral-950 text-lg items-center"
         >
-          Pontuação Total
-          <ArrowUpDown className="ml-2 h-3 w-3" />
+          {/* Changed from 'Pontuação Total' to 'Last' (adjust as needed) */}
+          Last 
+          <ArrowUpDown className="ml-2 h-5 w-5" />
         </Button>
       );
     },
