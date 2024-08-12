@@ -4,9 +4,9 @@ import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-import { Player } from '@/types/player'; 
+import { Player } from "@/types/player";
 
-export const columns: ColumnDef<Player>[] = [ 
+export const columns: ColumnDef<Player>[] = [
   {
     accessorKey: "position",
     header: ({ column }) => {
@@ -37,7 +37,7 @@ export const columns: ColumnDef<Player>[] = [
       );
     },
   },
-  
+
   {
     accessorKey: "avarage", // Corrected the typo
     header: ({ column }) => {
@@ -78,7 +78,7 @@ export const columns: ColumnDef<Player>[] = [
           className="text-neutral-950 text-lg items-center"
         >
           {/* Changed from 'Pontuação Total' to 'Last' (adjust as needed) */}
-          Last 
+          Last
           <ArrowUpDown className="ml-2 h-5 w-5" />
         </Button>
       );

@@ -6,7 +6,7 @@ import Link from "next/link";
 import { UserCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "teams - serie feminina",
+  title: "teams - feminina",
 };
 
 export default async function FemaleSerieAPage() {

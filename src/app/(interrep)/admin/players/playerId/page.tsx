@@ -96,7 +96,7 @@ export default async function AdminPlayersPage() {
             <span className="text-xl font-semibold">Últimos Jogos</span>
           </div>
         </div>
-          <DataTable columns={columns} data={scouts} />
+        <DataTable columns={columns} data={scouts} />
       </div>
     </div>
   );

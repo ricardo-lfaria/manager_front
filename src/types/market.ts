@@ -1,5 +1,5 @@
 export type Market = {
-    openAt: Date,
-    closeAt: Date,
-    id: string
-}
+  openAt: Date;
+  closeAt: Date;
+  id: string;
+};

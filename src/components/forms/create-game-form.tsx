@@ -57,7 +57,6 @@ export default function CreateGameForm() {
     control,
     handleSubmit,
     formState: { errors },
-    getValues,
   } = methods;
 
   const onSubmit = (data: CreateGameData) => {

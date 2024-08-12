@@ -2,7 +2,6 @@ import { CampaignCard } from "@/components/cards/campaign-card";
 import { Metadata } from "next";
 import DialogCreateCampaign from "@/components/dialogs/create-campaign-dialog";
 import { Campaign } from "@/types/campaign";
-import { CampaignProvider } from "@/context/campaign-context";
 
 export const metadata: Metadata = {
   title: "admin - campaign",
@@ -13,7 +12,7 @@ async function getCampaign(): Promise<Campaign[]> {
     const res = await fetch(
       `https://667e1d1d297972455f6723ea.mockapi.io/campaign`,
       {
-        cache: 'no-cache',
+        cache: "no-cache",
         // next: { revalidate: 259200 },
       }
     );
@@ -40,7 +39,7 @@ export default async function AdminCampaignPage() {
         <DialogCreateCampaign></DialogCreateCampaign>
       </div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-2">
-      {campaigns?.map((campaign) => (
+        {campaigns?.map((campaign) => (
           <CampaignCard key={campaign.id} {...campaign} />
         ))}
       </div>

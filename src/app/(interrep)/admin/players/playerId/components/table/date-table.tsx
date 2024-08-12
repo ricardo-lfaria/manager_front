@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { useState } from "react";
 
 import {
@@ -64,7 +64,7 @@ export function DataTable<TData extends DataRow, TValue>({
   return (
     <div className="bg-white rounded-xl w-full flex flex-col gap-6 ">
       <div className="bg-white rounded-xl w-full ">
-        <Table >
+        <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow className="hover:bg-inherit" key={headerGroup.id}>

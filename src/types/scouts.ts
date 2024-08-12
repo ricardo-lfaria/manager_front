@@ -1,23 +1,23 @@
 export type Scouts = {
-    ec: number,
-    go: number,
-    ca: number,
-    caz: number,
-    cv: number,
-    rb: number,
-    fc: number,
-    gc: number,
-    fs: number,
-    as: number,
-    fg: number,
-    ft: number,
-    pp: number,
-    gst: number,
-    sg: number,
-    ddg: number,
-    dpg: number,
-    gsg: number,
-    sgg: number,
-    id: string,
-    playerId: string
-}
+  ec: number;
+  go: number;
+  ca: number;
+  caz: number;
+  cv: number;
+  rb: number;
+  fc: number;
+  gc: number;
+  fs: number;
+  as: number;
+  fg: number;
+  ft: number;
+  pp: number;
+  gst: number;
+  sg: number;
+  ddg: number;
+  dpg: number;
+  gsg: number;
+  sgg: number;
+  id: string;
+  playerId: string;
+};

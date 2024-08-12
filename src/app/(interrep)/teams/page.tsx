@@ -39,7 +39,7 @@ async function getTeamPlayers(
 
 export default async function TeamsPage() {
   const playersSerieB = await getTeamPlayers("1", "1", "1");
-  const playersSerieA = await getTeamPlayers("2", "2", '2');
+  const playersSerieA = await getTeamPlayers("2", "2", "2");
   const playersFemale = await getTeamPlayers("1", "1", "1");
 
   return (

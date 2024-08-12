@@ -1,6 +1,4 @@
-import { UserCircle } from "lucide-react";
 import { Metadata } from "next";
-import Link from "next/link";
 import { User, columns } from "./table/collumns";
 import { DataTable } from "./table/date-table";
 import { Button } from "@/components/ui/button";
@@ -32,7 +30,7 @@ export default async function AdminGamePage() {
       <GameCard href=""></GameCard>
       <span className="text-2xl font-bold self-start">República 1</span>
       <DataTable columns={columns} data={users} />
-      
+
       <span className="text-2xl font-bold self-start">República 2</span>
       <DataTable columns={columns} data={users} />
     </div>

@@ -26,10 +26,12 @@ export default async function LeaguePage() {
       <div className="bg-white flex self-start w-full justify-between px-4 py-2 items-center h-20">
         {hasLeague ? (
           <div className="w-full flex flex-col lg:flex-row lg:justify-between lg:items-center">
-            <span className="text-lg lg:text-xl font-semibold">Liga sjdiasj</span>
+            <span className="text-lg lg:text-xl font-semibold">
+              Liga sjdiasj
+            </span>
             <div className="flex gap-4 lg:items-center lg:justify-end w-1/3">
               <div className="flex gap-1 items-center">
-              <p className="text-lg font-bold">Jogadores:</p>
+                <p className="text-lg font-bold">Jogadores:</p>
                 <p className=" text-lg">45</p>
               </div>
               <Button

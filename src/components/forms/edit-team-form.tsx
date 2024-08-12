@@ -8,7 +8,6 @@ import { Input } from "@/components/ui/input";
 import { DialogClose } from "@/components/ui/dialog";
 import Image from "next/image";
 import { useTeamContext } from "@/context/team-context";
-import { useEffect } from "react";
 
 const editTeamSchema = z.object({
   teamAvatar: z.string(),

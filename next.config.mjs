@@ -14,7 +14,7 @@ const nextConfig = {
                 port: '',
                 pathname: '/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/**',
             },
-           
+
         ],
     },
 };
