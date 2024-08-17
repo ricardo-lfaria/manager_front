@@ -34,42 +34,42 @@ export function HamburguerNav() {
           }`}
         >
           <Link
-            href="/"
+            href="/manager/"
             className="block px-1 py-2 hover:bg-slate-100/50"
             onClick={toggleMenu}
           >
             Home
           </Link>
           <Link
-            href="/teams"
+            href="/manager/teams"
             className="block px-1 py-2 hover:bg-slate-100/50"
             onClick={toggleMenu}
           >
             Time
           </Link>
           <Link
-            href="/ranking"
+            href="/manager/ranking"
             className="block px-1 py-2 hover:bg-slate-100/50"
             onClick={toggleMenu}
           >
             Ranking
           </Link>
           <Link
-            href="/leagues"
+            href="/manager/leagues"
             className="block px-1 py-2 hover:bg-slate-100/50"
             onClick={toggleMenu}
           >
             Ligas
           </Link>
           <Link
-            href="/teams"
+            href="/manager/teams"
             className="block px-1 py-2 hover:bg-slate-100/50"
             onClick={toggleMenu}
           >
             Seleção da Rodada
           </Link>
           <Link
-            href="/teams"
+            href="/manager/teams"
             className="block px-1 py-2 hover:bg-slate-100/50"
             onClick={toggleMenu}
           >

@@ -7,8 +7,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { DataTable } from "../../app/(interrep)/teams/(tournament)/components/table/date-table";
-import { columns } from "../../app/(interrep)/teams/(tournament)/components/table/collumns";
+import { DataTable } from "../../app/(interrep)/manager/teams/(tournament)/components/table/date-table";
+import { columns } from "../../app/(interrep)/manager/teams/(tournament)/components/table/collumns";
 import { Player } from "@/types/player";
 
 async function getTeamPlayers(
@@ -29,7 +29,6 @@ async function getTeamPlayers(
     }
 
     const data = await res.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.error("Error fetching players:", error);

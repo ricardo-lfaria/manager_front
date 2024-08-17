@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -10,7 +10,7 @@ import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { Mail, Lock } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
-import router from "next/router";
+import { useRouter } from 'next/navigation'; 
 
 const loginSchema = z.object({
   email: z.string().email("Email inválido"),
@@ -27,8 +27,10 @@ export type LoginData = z.infer<typeof loginSchema>;
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false); 
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
+  const [isMounted, setIsMounted] = useState(false);
 
   const {
     register,
@@ -40,33 +42,34 @@ export default function LoginForm() {
   });
 
   const onSubmit = async (data: LoginData) => {
+    if (!isMounted) return;
     console.log(data);
     setIsLoading(true); // Show loading indicator
     setError(null); // Clear previous errors
-
     try {
-      const res = await fetch("https://667e1d1d297972455f6723ea.mockapi.io/auth/1", { 
-        method: "GET",
+      const res = await fetch("/api/login", {
+        method: "POST",
         headers: { "Content-Type": "application/json" },
-        // body: JSON.stringify(data),
+        body: JSON.stringify(data),
       });
-      console.log(res)
 
       if (res.ok) {
-          const { token } = await res.json();
-        
-        localStorage.setItem("authToken", token);
-        router.push("/"); // Navigate to dashboard or protected area
+        const { isAdmin } = await res.json();
+        router.push(isAdmin ? "/manager/admin" : "/manager/");
       } else {
         const errorData = await res.json();
         setError(errorData.error || "Erro desconhecido");
       }
     } catch (error) {
-      setError("Erro na conexão com o servidor"); 
+      setError("Erro na conexão com o servidor");
     } finally {
-      setIsLoading(false); // Hide loading indicator
+      setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   return (
     <form

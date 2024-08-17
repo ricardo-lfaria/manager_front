@@ -14,10 +14,11 @@ import {
   SelectTrigger,
 } from "@/components/ui/select";
 import { useState } from "react";
+import { usePlayerContext } from "@/context/player-context";
 const editPlayerSchema = z.object({
   name: z.string().min(1, "Nome do Time é obrigatório"),
-  fraternity: z.number(),
-  position: z.number(),
+  fraternity: z.string(),
+  position: z.string(),
   photo: z.string(),
   active: z.boolean(),
 });
@@ -25,6 +26,8 @@ const editPlayerSchema = z.object({
 type EditPlayerData = z.infer<typeof editPlayerSchema>;
 
 export default function EditPlayerForm() {
+  const { playerData } = usePlayerContext();
+
   const [photoSelected, setPhotoSelected] = useState(false);
 
   const {
@@ -34,6 +37,13 @@ export default function EditPlayerForm() {
     formState: { errors },
   } = useForm<EditPlayerData>({
     resolver: zodResolver(editPlayerSchema),
+    defaultValues: {
+      name: playerData?.name || "",
+      photo:  "",
+      fraternity: playerData?.teamId,
+      position: playerData?.teamId,
+      active: playerData?.status,
+    },
   });
 
   const onSubmit = (data: EditPlayerData) => {
@@ -63,7 +73,7 @@ export default function EditPlayerForm() {
   const { field } = useController({
     name: "photo",
     control,
-    defaultValue: "",
+    defaultValue:"",
   });
 
   return (

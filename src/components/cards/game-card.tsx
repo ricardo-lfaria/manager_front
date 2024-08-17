@@ -4,15 +4,15 @@ import Link from "next/link";
 
 interface GameCardProps {
   href: string;
-  id: string;
-  tournamentId: string;
-  createdAt: Date;
-  firstTeam: string;
-  secondTeam: string;
-  place: string;
-  time: Date;
-  firstTeamLogo: string;
-  secondTeamLogo: string;
+  id?: string;
+  tournamentId?: string;
+  createdAt?: Date;
+  firstTeam?: string;
+  secondTeam?: string;
+  place?: string;
+  time?: Date;
+  firstTeamLogo?: string;
+  secondTeamLogo?: string;
 }
 
 export async function GameCard({
@@ -27,15 +27,16 @@ export async function GameCard({
   firstTeamLogo,
   secondTeamLogo,
 }: GameCardProps) {
-  console.log(firstTeam);
   return (
-    <Link href={href} className="w-full shadow-sm shadow-neutral-100 pointer-events-none">
+    <Link href={href} className="w-full shadow-sm shadow-neutral-100"
+    // pointer-events-none"
+    >
       <div className="bg-white w-full h-fit gap-2 lg:h-16 flex flex-col lg:flex-row items-center justify-between rounded-md px-6 hover:bg-slate-100/40">
         <div className="flex items-center justify-between gap-9">
           <div className="flex items-center gap-5">
             <Image
               alt="Time-2"
-              src={firstTeamLogo}
+              src={firstTeamLogo || ""}
               width={48}
               height={48}
               quality={100}
@@ -47,7 +48,7 @@ export async function GameCard({
           <div className="flex items-center gap-6">
             <Image
               alt="Time-2"
-              src={secondTeamLogo}
+              src={secondTeamLogo || ""}
               width={48}
               height={48}
               quality={100}
@@ -62,11 +63,11 @@ export async function GameCard({
               color="rgb(163 163 163)"
               className="w-3 h-3 lg:h-5 lg:w-5"
             />
-            <p className="text-xs lg:text-lg">{time.toString().slice(5, 10).replace("-", "/")}</p>
+            <p className="text-xs lg:text-lg">{time?.toString().slice(5, 10).replace("-", "/")}</p>
           </div>
           <div className="flex gap-2 items-center">
             <Clock color="rgb(163 163 163)" className="w-3 h-3 lg:h-5 lg:w-5" />
-            <p className="text-xs lg:text-lg">{time.toString().slice(11, 16)}</p>
+            <p className="text-xs lg:text-lg">{time?.toString().slice(11, 16)}</p>
           </div>
           <div className="flex gap-2 items-center">
             <MapPin

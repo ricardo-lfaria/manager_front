@@ -7,7 +7,8 @@ interface LogoProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export function Logo({ className, ...props }: LogoProps) {
-  return (
+  console.log('logo')
+    return (
     <Image
       src="/logo.svg"
       alt="interrep manager logo"

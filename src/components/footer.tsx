@@ -9,13 +9,13 @@ export function Footer() {
       <div className="flex flex-col-reverse lg:flex-row items-center justify-center p-2">
         <div className="pl-10 flex  items-start justify-between gap-12 w-full ">
           <div className="flex gap-4">
-            <Link href="/" className="stroke-blue-800">
+            <Link href="/manager/" className="stroke-blue-800">
               <Image src={facebookSVG} alt="facebook" />
             </Link>
-            <Link href="/" className="">
+            <Link href="/manager/" className="">
               <Image src={instagramSVG} alt="instagram" />
             </Link>
-            <Link href="/" className="">
+            <Link href="/manager/" className="">
               <Globe />
             </Link>
           </div>

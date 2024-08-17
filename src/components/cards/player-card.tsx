@@ -23,7 +23,6 @@ export function PlayerCard({  id,
     last,
     status,
     kicks,}:PlayerCardProps) {
-        console.log(name)     
   return (
     <Card className="h-fit rounded-xl">
       <CardHeader className="shadow-sm my-4 border-b">

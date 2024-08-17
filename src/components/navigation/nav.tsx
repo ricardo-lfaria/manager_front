@@ -21,21 +21,21 @@ export function Nav() {
       <div className="hidden lg:flex flex-col justify-between left-0 w-2/12 px-6 py-8 bg-white border-r border-neutral-100 gap-5">
         <div className="flex flex-col gap-5">
           <div className="flex flex-col w-full items-start ">
-            <Link href="/" className="">
+            <Link href="/manager/" className="">
               <Logo />
             </Link>
           </div>
 
           <div className="hidden md:flex md:flex-col items-start gap-4">
             <Link
-              href="/"
+              href="/manager/"
               className="px-3 flex items-center gap-2 hover:underline-offset-4 hover:underline hover:  hover:decoration-blue-800 hover:decoration-2"
             >
               <Home color="rgb(30,64,175)" strokeWidth={2} size={24}></Home>
               <span className="text-base font-semibold">Home</span>
             </Link>
             <Link
-              href="/teams"
+              href="/manager/teams"
               className="px-3 flex items-center gap-2 hover:underline-offset-4 hover:underline hover:  hover:decoration-blue-800 hover:decoration-2"
             >
               <UsersRound
@@ -46,7 +46,7 @@ export function Nav() {
               <span className="text-base font-semibold">Seu Time</span>
             </Link>
             <Link
-              href="/ranking"
+              href="/manager/ranking"
               className="px-3 flex items-center gap-2 hover:underline-offset-4 hover:underline hover:  hover:decoration-blue-800 hover:decoration-2"
             >
               <BarChartBig
@@ -58,21 +58,21 @@ export function Nav() {
             </Link>
 
             <Link
-              href="/leagues"
+              href="/manager/leagues"
               className="px-3 flex items-center gap-2 hover:underline-offset-4 hover:underline hover:  hover:decoration-blue-800 hover:decoration-2"
             >
               <Crown color="rgb(30,64,175)" strokeWidth={2} size={24}></Crown>
               <span className="text-base font-semibold">Ligas</span>
             </Link>
             <Link
-              href="/contact"
+              href="/manager/contact"
               className="px-3 flex items-center gap-2 hover:underline-offset-4 hover:underline hover:  hover:decoration-blue-800 hover:decoration-2"
             >
               <Star color="rgb(30,64,175)" strokeWidth={2} size={24}></Star>
               <span className="text-base font-semibold">Seleção da Rodada</span>
             </Link>
             <Link
-              href="/contact"
+              href="/manager/contact"
               className="px-3 flex items-center gap-2 hover:underline-offset-4 hover:underline hover:  hover:decoration-blue-800 hover:decoration-2"
             >
               <Receipt
@@ -85,7 +85,7 @@ export function Nav() {
           </div>
         </div>
         <div className="flex justify-between items-center">
-          <Link href="/perfil" className="flex gap-3 items-center">
+          <Link href="/manager/perfil" className="flex gap-3 items-center">
             <UserCircle strokeWidth={2} size={36} />
             <span className="text-xl font-semibold">Perfil</span>
           </Link>

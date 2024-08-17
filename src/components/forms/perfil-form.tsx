@@ -8,6 +8,15 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Eye, EyeOff } from "lucide-react";
 import { useController } from "react-hook-form";
+import Link from "next/link";
+
+interface PerfilProps {
+  name: string | undefined;
+  email: string | undefined;
+  password: string | undefined;
+  team: string | undefined;
+  avatar: string | undefined;
+}
 
 const profileSchema = z.object({
   user: z.string().min(3, "Nome do perfil deve ter no mínimo 3 caracteres"),
@@ -25,7 +34,13 @@ const profileSchema = z.object({
 
 export type ProfileData = z.infer<typeof profileSchema>;
 
-export default function PerfilForm() {
+export default function PerfilForm({
+  name,
+  email,
+  password,
+  team,
+  avatar,
+}: PerfilProps) {
   const [showPassword, setShowPassword] = useState(false);
   const {
     register,
@@ -34,6 +49,13 @@ export default function PerfilForm() {
     formState: { errors },
   } = useForm<ProfileData>({
     resolver: zodResolver(profileSchema),
+    defaultValues: {
+      user: name,
+      email: email,
+      password: password,
+      team: team,
+      foto: "",
+    },
   });
 
   const onSubmit = (data: ProfileData) => {
@@ -62,7 +84,7 @@ export default function PerfilForm() {
   const { field } = useController({
     name: "foto",
     control,
-    defaultValue: "", 
+    defaultValue: "",
   });
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-20">
@@ -152,7 +174,9 @@ export default function PerfilForm() {
           type="button"
           className="bg-transparent font-semibold p-4 max-w-[240px] h-12 text-neutral-600  border-neutral-600 rounded-lg text-center w-1/4"
         >
-          Voltar
+          <Link href="/manager/" className="w-full">
+            Voltar
+          </Link>
         </Button>
         <Button
           type="submit"
