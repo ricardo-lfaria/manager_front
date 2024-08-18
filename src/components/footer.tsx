@@ -5,7 +5,7 @@ import facebookSVG from "../../public/facebook.svg";
 import instagramSVG from "../../public/instagram.svg";
 export function Footer() {
   return (
-    <footer className="bottom-0 mt-3 w-full bg-white border-t border-neutral-100">
+    <footer className="bottom-0 pt-3 w-full bg-white border-t border-neutral-100">
       <div className="flex flex-col-reverse lg:flex-row items-center justify-center p-2">
         <div className="pl-10 flex  items-start justify-between gap-12 w-full ">
           <div className="flex gap-4">
