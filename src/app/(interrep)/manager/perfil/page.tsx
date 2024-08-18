@@ -1,6 +1,12 @@
 import PerfilForm from "@/components/forms/perfil-form";
 import { UserPerfil } from "@/types/user-perfil";
 
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Perfil",
+};
+
 async function getLoggedUserinformation(
   prefilId: string
 ): Promise<UserPerfil | null> {

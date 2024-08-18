@@ -67,7 +67,7 @@ async function getPlayersScout(
 }
 
 export const metadata: Metadata = {
-  title: "admin - players",
+  title: "Players",
 };
 
 export default async function AdminPlayersPage({params}: PlayerProps) {

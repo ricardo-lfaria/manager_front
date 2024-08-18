@@ -46,7 +46,7 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import { User } from "./collumns";
+import { Player } from "@/types/player";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -58,7 +58,7 @@ const filterSchema = z.object({
 });
 type FilterSchma = z.infer<typeof filterSchema>;
 
-interface DataRow extends User {}
+interface DataRow extends Player {}
 
 export function DataTable<TData extends DataRow, TValue>({
   columns,

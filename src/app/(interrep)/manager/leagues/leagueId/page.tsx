@@ -7,7 +7,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DialogShareLeague } from "@/components/dialogs/share-league-dialog";
 
 export const metadata: Metadata = {
-  title: "league",
+  title: "League",
 };
 
 async function getUsers(): Promise<User[]> {

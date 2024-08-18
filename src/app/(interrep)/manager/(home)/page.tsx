@@ -73,12 +73,7 @@ async function getCampaign(): Promise<Campaign[]> {
 }
 
 export const metadata: Metadata = {
-  title: "InterREP Manager | Sua Central do Fantasy Game",
-  description:
-    "Mergulhe no mundo do fantasy game do InterREP! Escale seu time dos sonhos com os craques do torneio, " +
-    "acompanhe as partidas em tempo real e dispute o topo do ranking com seus amigos. Viva a emoção do InterREP como nunca antes!",
-  keywords:
-    "InterREP, fantasy game, futebol society, São Carlos, USP, UFSCar, IFSP",
+    title: "Home"
 };
 
 export default async function Home() {

@@ -86,7 +86,7 @@ async function getGames(): Promise<Game[]> {
 }
 
 export const metadata: Metadata = {
-  title: "admin - team",
+  title: "Team",
 };
 
 export default async function AdminTeamPage({ params }: TeamProps) {

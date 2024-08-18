@@ -56,7 +56,7 @@ async function getFemaleTeam(): Promise<Team[]> {
 }
 
 export const metadata: Metadata = {
-  title: "admin-home",
+  title: "Admin",
 };
 
 async function getMarket(marketId: string): Promise<Market | null> {

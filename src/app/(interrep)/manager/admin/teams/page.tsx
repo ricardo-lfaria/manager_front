@@ -39,7 +39,7 @@ async function getFemaleTeam(): Promise<Team[]> {
 }
 
 export const metadata: Metadata = {
-  title: "admin - teams",
+  title: "Teams",
 };
 
 export default async function AdminTeamsPage() {

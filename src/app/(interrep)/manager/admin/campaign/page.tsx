@@ -4,7 +4,7 @@ import DialogCreateCampaign from "@/components/dialogs/create-campaign-dialog";
 import { Campaign } from "@/types/campaign";
 
 export const metadata: Metadata = {
-  title: "admin - campaign",
+  title: "Campaign",
 };
 
 async function getCampaign(): Promise<Campaign[]> {

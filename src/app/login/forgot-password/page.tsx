@@ -1,4 +1,10 @@
 import ForgotPasswordForm from "@/components/forms/forgot-password-form";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Forgot Password",
+};
+
 export default async function ForgotPasswordPage() {
   return (
     <div className="w-full flex flex-col items-center justify-center gap-8">

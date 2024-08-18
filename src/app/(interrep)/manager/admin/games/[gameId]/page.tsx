@@ -7,7 +7,7 @@ import { Game } from "@/types/games";
 import { Player } from "@/types/player";
 
 export const metadata: Metadata = {
-  title: "admin - game",
+  title: "Game",
 };
 
 interface GameProps {

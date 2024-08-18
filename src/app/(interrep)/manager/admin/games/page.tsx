@@ -5,7 +5,7 @@ import DialogCreateGame from "@/components/dialogs/create-game-dialog";
 import { Game } from "@/types/games";
 
 export const metadata: Metadata = {
-  title: "admin - games",
+  title: "Games",
 };
 
 async function getSeriesAGames(): Promise<Game[]> {

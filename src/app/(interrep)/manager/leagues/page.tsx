@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "league",
+  title: "Leagues",
 };
 
 async function getUsers(): Promise<User[]> {

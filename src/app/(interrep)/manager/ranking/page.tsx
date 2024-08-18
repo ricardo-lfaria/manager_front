@@ -5,7 +5,7 @@ import { User, columns } from "./table/collumns";
 import { DataTable } from "./table/date-table";
 
 export const metadata: Metadata = {
-  title: "ranking",
+  title: "Ranking",
 };
 
 async function getUsers(): Promise<User[]> {
