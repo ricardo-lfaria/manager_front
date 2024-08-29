@@ -8,16 +8,34 @@ import { Input } from "@/components/ui/input";
 import { DialogClose } from "@/components/ui/dialog";
 import Image from "next/image";
 import { useTeamContext } from "@/context/team-context";
+import DOMPurify from "dompurify";
+
 
 const editTeamSchema = z.object({
-  teamAvatar: z.string(),
-  teamName: z.string().min(1, "Nome do Time é obrigatório"),
+  teamAvatar: z.string().url().optional(), 
+  teamName: z
+    .string()
+    .trim()
+    .min(1, "O nome da equipe é obrigatório")
+    .max(30, "O nome da equipe deve ter no máximo 30 caracteres")
+    .regex(/^[a-zA-Z0-9_-]+$/, "O nome da equipe pode conter apenas letras, números, hífens e underlines")
+    .transform((value) => {
+      try {
+        const sanitizedValue = DOMPurify.sanitize(value);
+        if (sanitizedValue !== value) {
+          throw new Error("O nome da equipe contém caracteres inválidos.");
+        }
+        return sanitizedValue;
+      } catch (error) {
+        throw new Error("Ocorreu um erro ao validar o nome da equipe. Por favor, tente novamente.");
+      }
+    }),
 });
 
 type editTeamData = z.infer<typeof editTeamSchema>;
 
 export default function EditTeamForm() {
-    const {teamData} = useTeamContext()
+  const { teamData } = useTeamContext();
   const {
     register,
     handleSubmit,
@@ -25,9 +43,9 @@ export default function EditTeamForm() {
   } = useForm<editTeamData>({
     resolver: zodResolver(editTeamSchema),
     defaultValues: {
-        teamName: teamData?.name || '',
-        teamAvatar: teamData?.avatar || '',
-    }
+      teamName: teamData?.name || "",
+      teamAvatar: teamData?.avatar || "",
+    },
   });
 
   const onSubmit = (data: editTeamData) => {

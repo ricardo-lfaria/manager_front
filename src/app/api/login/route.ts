@@ -27,8 +27,8 @@ export async function POST(request: Request) {
       const { token, isAdmin } = await response.json();
 
       const cookieStore = cookies();
-      cookieStore.set("authToken", token,{ httpOnly: true, secure: true });
-      cookieStore.set("isAdmin", isAdmin, { httpOnly: true, secure: true  });
+      cookieStore.set("authToken", token,{ httpOnly: true, secure: true, sameSite:true });
+      cookieStore.set("isAdmin", isAdmin, { httpOnly: true, secure: true, sameSite:true  });
 
       return NextResponse.json({ success: true, isAdmin });
     } else {
