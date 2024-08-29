@@ -18,6 +18,10 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
   },
+  openGraph: {
+    images: '/opengraph-image.png',
+  },
+  metadataBase: new URL('http://localhost:3000')
 };
 
 export default function RootLayout({
